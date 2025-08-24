@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "apple-docs": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@kimsungwhee/apple-docs-mcp@latest"
+      ],
+      "env": {}
+    },
+    "XcodeBuildMCP": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "xcodebuildmcp@latest"
+      ],
+      "env": {}
+    }
+  }
+}
