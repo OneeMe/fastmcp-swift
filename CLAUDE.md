@@ -135,16 +135,22 @@ cd Examples/FastMCPSwiftServerExample/
 # List available targets and schemes
 xcodebuild -list
 
-# Build for macOS
+# Build for macOS (recommended - no device ID needed)
 xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
            -scheme FastMCPSwiftServerExample \
            -destination "platform=macOS" \
            build
 
-# Build for visionOS Simulator
+# Build for visionOS Simulator (no device ID needed)
 xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
            -scheme FastMCPSwiftServerExample \
-           -destination "platform=visionOS Simulator,name=Apple Vision Pro" \
+           -destination "platform=visionOS Simulator" \
+           build
+
+# Build for iOS Simulator (no device ID needed)
+xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
+           -scheme FastMCPSwiftServerExample \
+           -destination "platform=iOS Simulator" \
            build
 
 # Run tests (macOS only for UI/app tests)
@@ -163,7 +169,14 @@ xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
 # Build for release (visionOS Simulator)
 xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
            -scheme FastMCPSwiftServerExample \
-           -destination "platform=visionOS Simulator,name=Apple Vision Pro" \
+           -destination "platform=visionOS Simulator" \
+           -configuration Release \
+           build
+
+# Build for release (iOS Simulator)
+xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
+           -scheme FastMCPSwiftServerExample \
+           -destination "platform=iOS Simulator" \
            -configuration Release \
            build
 ```
@@ -184,15 +197,17 @@ The Xcode project automatically resolves these packages:
 - `swift-log`, `swift-system`, `EventSource` (transitive dependencies)
 
 ### Platform-Specific Notes
-- **iOS Support**: Currently not configured in the Xcode project (iOS simulators not available in destinations)
-- **visionOS**: Fully supported for both Debug and Release configurations
+- **iOS Support**: Available via iOS Simulator destination (no specific device ID required)
+- **visionOS**: Fully supported for both Debug and Release configurations via visionOS Simulator
 - **macOS**: Primary development and testing platform with full UI/unit test support
 - **Cross-Platform**: FastMCP Swift packages support iOS 16+/macOS 13+/visionOS 1+ via Swift Package Manager
 
 ### Available Destinations
-When using `xcodebuild -list`, you'll see:
+When using `xcodebuild -showdestinations`, you'll see:
 - `{ platform:macOS, name:Any Mac }`
 - `{ platform:visionOS Simulator, name:Apple Vision Pro }`
 - `{ platform:visionOS Simulator, name:Apple Vision Pro 4K }`
+- `{ platform:iOS Simulator, name:iPhone 16 Pro }`
+- And many other iOS/visionOS simulator options
 
-Note: iOS destinations may show as "Ineligible" if iOS SDK versions are not installed.
+**Note:** No device IDs are required for these build commands - xcodebuild will automatically select the first available matching destination.
