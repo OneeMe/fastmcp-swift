@@ -12,8 +12,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "FastMCPSwift",
-            targets: ["FastMCPSwift"]),
+            name: "FastMCPServer",
+            targets: ["FastMCPServer"]),
         .library(
             name: "FastMCPProtocol",
             targets: ["FastMCPProtocol"]),
@@ -25,14 +25,14 @@ let package = Package(
         .target(
             name: "FastMCPProtocol"),
         .target(
-            name: "FastMCPSwift",
+            name: "FastMCPServer",
             dependencies: [
                 "FastMCPProtocol",
                 .product(name: "MCP", package: "swift-sdk")
             ]),
         .testTarget(
-            name: "FastMCPSwiftTests",
-            dependencies: ["FastMCPSwift", "FastMCPProtocol"]
+            name: "FastMCPServerTests",
+            dependencies: ["FastMCPServer", "FastMCPProtocol"]
         ),
     ]
 )

@@ -1,5 +1,5 @@
 import XCTest
-@testable import FastMCPSwift
+@testable import FastMCPServer
 
 final class SimpleTests: XCTestCase {
     

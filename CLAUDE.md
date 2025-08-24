@@ -42,14 +42,14 @@ swift package clean
 ### Dual-Package Structure
 This project implements a **two-package architecture** designed for modularity and future extensibility:
 
-1. **FastMCPSwift** (Main Package): HTTP-only MCP server/client implementation
+1. **FastMCPServer** (Main Package): HTTP-only MCP server/client implementation
 2. **FastMCPProtocol** (Protocol Package): Dependency injection framework for future plugin support
 
 ### Key Architectural Decisions
 
 **HTTP-Only Transport**: This implementation deliberately supports only HTTP streaming transport (no stdio), designed for web deployments and cross-platform client-server architectures.
 
-**Wrapper Pattern**: FastMCPSwift acts as a high-level wrapper around the official MCP Swift SDK (`github.com/modelcontextprotocol/swift-sdk`), providing simplified APIs while leveraging the robust underlying implementation.
+**Wrapper Pattern**: FastMCPServer acts as a high-level wrapper around the official MCP Swift SDK (`github.com/modelcontextprotocol/swift-sdk`), providing simplified APIs while leveraging the robust underlying implementation.
 
 **Protocol-Based DI**: The `FastMCPProtocol` package defines provider protocols (`ToolProvider`, `ResourceProvider`, `PromptProvider`) and a registry system, establishing the foundation for future plugin architecture.
 
