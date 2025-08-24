@@ -40,7 +40,24 @@ public final class SimpleFastMCP {
     ///   - host: Host to bind to (default: "127.0.0.1")
     ///   - port: Port to listen on (default: 8000)
     ///   - path: HTTP path for MCP endpoint (default: "/mcp")
+    /// - Returns: After the server has started successfully
     public func run(host: String = "127.0.0.1", port: Int = 8000, path: String = "/mcp") async throws {
+        #if canImport(Network)
+        let transport = HTTPServerTransport(host: host, port: port, path: path)
+        try await server.start(transport: transport)
+        // Return immediately after server starts, don't wait for completion
+        #else
+        throw FastMCPError.networkUnavailable
+        #endif
+    }
+    
+    /// Run the MCP server with HTTP streaming transport and wait for completion
+    /// - Parameters:
+    ///   - host: Host to bind to (default: "127.0.0.1")  
+    ///   - port: Port to listen on (default: 8000)
+    ///   - path: HTTP path for MCP endpoint (default: "/mcp")
+    /// - Note: This method blocks until the server is stopped
+    public func runAndWait(host: String = "127.0.0.1", port: Int = 8000, path: String = "/mcp") async throws {
         #if canImport(Network)
         let transport = HTTPServerTransport(host: host, port: port, path: path)
         try await server.start(transport: transport)
