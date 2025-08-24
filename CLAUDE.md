@@ -15,12 +15,6 @@ swift test
 # Build for release
 swift build -c release
 
-# Run a specific test class
-swift test --filter SimpleTests
-
-# Run a specific test method
-swift test --filter SimpleTests.testSimpleFastMCPInitialization
-
 # Build and test in one command
 swift build && swift test
 ```
