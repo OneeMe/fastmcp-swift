@@ -127,3 +127,78 @@ The project uses a layered error approach:
 - `FastMCPError` for domain-specific errors (URL validation, initialization)
 - Allow MCP SDK errors to bubble up for protocol-level issues
 - Provider protocols should throw domain-appropriate errors that get wrapped by the transport layer
+
+## Xcode Project Support
+
+The repository includes an example Xcode project at `Examples/FastMCPSwiftServerExample/` that demonstrates FastMCP Swift integration in a macOS app.
+
+### Building the Xcode Project
+
+```bash
+# Navigate to the Xcode project directory
+cd Examples/FastMCPSwiftServerExample/
+
+# List available targets and schemes
+xcodebuild -list
+
+# Build for macOS
+xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
+           -scheme FastMCPSwiftServerExample \
+           -destination "platform=macOS" \
+           build
+
+# Build for visionOS Simulator
+xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
+           -scheme FastMCPSwiftServerExample \
+           -destination "platform=visionOS Simulator,name=Apple Vision Pro" \
+           build
+
+# Run tests (macOS only for UI/app tests)
+xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
+           -scheme FastMCPSwiftServerExample \
+           -destination "platform=macOS" \
+           test
+
+# Build for release (macOS)
+xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
+           -scheme FastMCPSwiftServerExample \
+           -destination "platform=macOS" \
+           -configuration Release \
+           build
+
+# Build for release (visionOS Simulator)
+xcodebuild -project FastMCPSwiftServerExample.xcodeproj \
+           -scheme FastMCPSwiftServerExample \
+           -destination "platform=visionOS Simulator,name=Apple Vision Pro" \
+           -configuration Release \
+           build
+```
+
+### Xcode Project Structure
+- **Main Target**: `FastMCPSwiftServerExample` - Multi-platform app with FastMCPSwift integration
+- **Test Targets**: `FastMCPSwiftServerExampleTests` (unit tests), `FastMCPSwiftServerExampleUITests` (UI tests)
+- **Dependencies**: Automatically resolves FastMCP Swift packages and external dependencies via SPM
+- **Supported Platforms**: 
+  - macOS 14.0+ (primary platform, supports tests)
+  - visionOS 1.0+ (via visionOS Simulator)
+
+### Package Dependencies in Xcode
+The Xcode project automatically resolves these packages:
+- `fastmcp-swift` (local path dependency to parent directory)
+- `FastMCPSwiftExampleTool` (local example tool library)  
+- `mcp-swift-sdk` v0.10.1+ (official MCP Swift SDK)
+- `swift-log`, `swift-system`, `EventSource` (transitive dependencies)
+
+### Platform-Specific Notes
+- **iOS Support**: Currently not configured in the Xcode project (iOS simulators not available in destinations)
+- **visionOS**: Fully supported for both Debug and Release configurations
+- **macOS**: Primary development and testing platform with full UI/unit test support
+- **Cross-Platform**: FastMCP Swift packages support iOS 16+/macOS 13+/visionOS 1+ via Swift Package Manager
+
+### Available Destinations
+When using `xcodebuild -list`, you'll see:
+- `{ platform:macOS, name:Any Mac }`
+- `{ platform:visionOS Simulator, name:Apple Vision Pro }`
+- `{ platform:visionOS Simulator, name:Apple Vision Pro 4K }`
+
+Note: iOS destinations may show as "Ineligible" if iOS SDK versions are not installed.
