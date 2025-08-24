@@ -1,9 +1,14 @@
 import Foundation
 import MCP
+#if canImport(Network)
+import Network
+#endif
 
 public enum FastMCPError: Error, LocalizedError {
     case serverNotInitialized
     case invalidURL(String)
+    case networkUnavailable
+    case serverStartFailed(String)
     
     public var errorDescription: String? {
         switch self {
@@ -11,6 +16,10 @@ public enum FastMCPError: Error, LocalizedError {
             return "FastMCP server is not initialized"
         case .invalidURL(let url):
             return "Invalid URL: \(url)"
+        case .networkUnavailable:
+            return "Network framework is not available on this platform"
+        case .serverStartFailed(let reason):
+            return "Failed to start server: \(reason)"
         }
     }
 }
@@ -26,15 +35,31 @@ public final class SimpleFastMCP {
         self.server = Server(name: name, version: version)
     }
     
+    /// Run the MCP server with HTTP streaming transport
+    /// - Parameters:
+    ///   - host: Host to bind to (default: "127.0.0.1")
+    ///   - port: Port to listen on (default: 8000)
+    ///   - path: HTTP path for MCP endpoint (default: "/mcp")
     public func run(host: String = "127.0.0.1", port: Int = 8000, path: String = "/mcp") async throws {
-        let urlString = "http://\(host):\(port)\(path)"
-        guard let endpoint = URL(string: urlString) else {
-            throw FastMCPError.invalidURL(urlString)
-        }
-        
-        let transport = HTTPClientTransport(endpoint: endpoint)
+        #if canImport(Network)
+        let transport = HTTPServerTransport(host: host, port: port, path: path)
         try await server.start(transport: transport)
         await server.waitUntilCompleted()
+        #else
+        throw FastMCPError.networkUnavailable
+        #endif
+    }
+    
+    /// Run the MCP server with stdio transport (for command line usage)
+    public func runStdio() async throws {
+        let transport = StdioTransport()
+        try await server.start(transport: transport)
+        await server.waitUntilCompleted()
+    }
+    
+    /// Access the underlying MCP server for advanced configuration
+    public var mcpServer: Server {
+        return server
     }
 }
 
@@ -61,5 +86,10 @@ public final class SimpleFastMCPClient {
     
     public func ping() async throws {
         try await client.ping()
+    }
+    
+    /// Access the underlying MCP client for advanced usage
+    public var mcpClient: MCP.Client {
+        return client
     }
 }

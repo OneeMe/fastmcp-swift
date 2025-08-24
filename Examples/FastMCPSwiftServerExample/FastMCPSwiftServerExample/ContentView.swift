@@ -56,8 +56,22 @@ struct ContentView: View {
                     Text("localhost:57890/mcp")
                         .font(.monospaced(.body)())
                         .padding()
-                        .background(Color.gray.opacity(0.2))
+                        .background(Color.green.opacity(0.2))
                         .cornerRadius(8)
+                    
+                    Text("You can now connect MCP clients to this endpoint!")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding()
+                } else {
+                    Text("HTTP streaming server failed to start")
+                        .foregroundColor(.red)
+                        .padding(.top)
+                    Text("Check console for error details.")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding()
                 }
                 
                 Button("Add Item") {

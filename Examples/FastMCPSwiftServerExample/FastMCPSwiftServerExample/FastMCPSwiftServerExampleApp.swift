@@ -46,14 +46,14 @@ class FastMCPServerManager: ObservableObject {
     private func startFastMCPServer() {
         Task {
             do {
-                serverStatus = "Starting FastMCP HTTP streaming server on localhost:57890/mcp"
+                serverStatus = "Starting FastMCP HTTP streaming server on localhost:57890/mcp..."
                 print(serverStatus)
                 try await fastMCPServer.run(host: "127.0.0.1", port: 57890, path: "/mcp")
                 isServerRunning = true
                 serverStatus = "FastMCP server running on localhost:57890/mcp"
                 print(serverStatus)
             } catch {
-                serverStatus = "Failed to start FastMCP server: \(error)"
+                serverStatus = "Failed to start FastMCP server: \(error.localizedDescription)"
                 print(serverStatus)
                 isServerRunning = false
             }
