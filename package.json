@@ -1,0 +1,23 @@
+{
+  "name": "fastmcp-swift",
+  "version": "1.0.0",
+  "description": "A Swift implementation of FastMCP, providing an ergonomic wrapper around the official MCP Swift SDK.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "mcp-inspector --mcp-url http://localhost:57890/mcp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OneeMe/fastmcp-swift.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OneeMe/fastmcp-swift/issues"
+  },
+  "homepage": "https://github.com/OneeMe/fastmcp-swift#readme",
+  "devDependencies": {
+    "@modelcontextprotocol/inspector": "^0.16.5"
+  }
+}
