@@ -24,7 +24,7 @@ public enum FastMCPError: Error, LocalizedError {
     }
 }
 
-public final class SimpleFastMCP {
+public final class SimpleFastMCP: @unchecked Sendable {
     public let name: String
     public let version: String
     private let server: Server
@@ -33,7 +33,145 @@ public final class SimpleFastMCP {
         self.name = name
         self.version = version
         self.server = Server(name: name, version: version)
+        
+        Task {
+            await setupToolHandlers()
+        }
     }
+    
+    private func setupToolHandlers() async {
+        // Register tools/list handler using the auto-discovered tools
+        await server.withMethodHandler(ListTools.self) { [weak self] _ in
+            let toolTypes = MCPToolTypeRegistry.shared.allToolTypes()
+            let tools = toolTypes.map { toolType in
+                let toolInstance = toolType.init()
+                return Tool(
+                    name: toolType.toolName,
+                    description: (toolInstance as? ToolProvider)?.toolDescription ?? "Tool description",
+                    inputSchema: self?.convertDictionaryToValue((toolInstance as? ToolProvider)?.getParameterSchema() ?? [:]) ?? .object([:])
+                )
+            }
+            
+            return ListTools.Result(tools: tools)
+        }
+        
+        // Register tools/call handler using the auto-discovered tools
+        await server.withMethodHandler(CallTool.self) { [weak self] request in
+            guard let toolType = MCPToolTypeRegistry.shared.getToolType(named: request.name) else {
+                return CallTool.Result(
+                    content: [.text("Tool not found: \(request.name)")], 
+                    isError: true
+                )
+            }
+            
+            guard let tool = toolType.init() as? ToolProvider else {
+                return CallTool.Result(
+                    content: [.text("Tool does not conform to ToolProvider: \(request.name)")], 
+                    isError: true
+                )
+            }
+            
+            // Convert MCP Value arguments to [String: Any]
+            let arguments: [String: Any]
+            if let args = request.arguments {
+                arguments = self?.convertValueObjectToDictionary(args) ?? [:]
+            } else {
+                arguments = [:]
+            }
+            
+            do {
+                let result = try await tool.execute(with: arguments)
+                let resultText = self?.formatResult(result) ?? String(describing: result)
+                return CallTool.Result(content: [.text(resultText)])
+            } catch {
+                return CallTool.Result(
+                    content: [.text("Tool execution failed: \(error.localizedDescription)")],
+                    isError: true
+                )
+            }
+        }
+    }
+    
+    private func convertDictionaryToValue(_ dictionary: [String: Any]) -> Value {
+        var valueDict: [String: Value] = [:]
+        for (key, value) in dictionary {
+            valueDict[key] = convertAnyToValue(value)
+        }
+        return .object(valueDict)
+    }
+    
+    private func convertAnyToValue(_ value: Any) -> Value {
+        switch value {
+        case is NSNull:
+            return .null
+        case let bool as Bool:
+            return .bool(bool)
+        case let int as Int:
+            return .int(int)
+        case let double as Double:
+            return .double(double)
+        case let string as String:
+            return .string(string)
+        case let data as Data:
+            return .data(data)
+        case let array as [Any]:
+            return .array(array.map { convertAnyToValue($0) })
+        case let dict as [String: Any]:
+            var valueDict: [String: Value] = [:]
+            for (k, v) in dict {
+                valueDict[k] = convertAnyToValue(v)
+            }
+            return .object(valueDict)
+        default:
+            return .string(String(describing: value))
+        }
+    }
+    
+    private func convertValueObjectToDictionary(_ objectValue: [String: Value]) -> [String: Any] {
+        var result: [String: Any] = [:]
+        for (key, val) in objectValue {
+            result[key] = convertValueToAny(val)
+        }
+        return result
+    }
+    
+    private func convertValueToAny(_ value: Value) -> Any {
+        switch value {
+        case .null:
+            return NSNull()
+        case .bool(let bool):
+            return bool
+        case .int(let int):
+            return int
+        case .double(let double):
+            return double
+        case .string(let string):
+            return string
+        case .data(_, let data):
+            return data
+        case .array(let array):
+            return array.map { convertValueToAny($0) }
+        case .object(let object):
+            var result: [String: Any] = [:]
+            for (key, val) in object {
+                result[key] = convertValueToAny(val)
+            }
+            return result
+        }
+    }
+    
+    private func formatResult(_ result: Any) -> String {
+        if let dict = result as? [String: Any] {
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: dict, options: [.prettyPrinted, .sortedKeys])
+                return String(data: jsonData, encoding: .utf8) ?? String(describing: result)
+            } catch {
+                return String(describing: result)
+            }
+        }
+        return String(describing: result)
+    }
+    
     
     /// Run the MCP server with HTTP streaming transport
     /// - Parameters:
