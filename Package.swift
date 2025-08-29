@@ -4,6 +4,19 @@
 import PackageDescription
 import CompilerPluginSupport
 
+// 定义要排除的文件和目录列表
+let excludedFiles = [
+    "AGENTS.md",
+    "buildServer.json",
+    "CLAUDE.md",
+    "Docs",
+    "Examples",
+    "node_modules",
+    "package-lock.json",
+    "package.json",
+    "Tests"
+]
+
 let package = Package(
     name: "fastmcp-swift",
     platforms: [
@@ -33,13 +46,15 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "FastMCPProtocol"),
+            name: "FastMCPProtocol",
+            exclude: excludedFiles),
         .target(
             name: "FastMCPServer",
             dependencies: [
                 "FastMCPProtocol",
                 .product(name: "MCP", package: "swift-sdk")
-            ]),
+            ],
+            exclude: excludedFiles),
         // Macro implementation target for tooling (hosted by compiler)
         .macro(
             name: "FastMCPMacroImpl",
@@ -56,7 +71,8 @@ let package = Package(
             dependencies: [
                 "FastMCPProtocol",
                 "FastMCPMacroImpl"
-            ]
+            ],
+            exclude: excludedFiles
         ),
         // Executable tool used by the build plugin
         .executableTarget(
@@ -74,7 +90,8 @@ let package = Package(
         ),
         .testTarget(
             name: "FastMCPServerTests",
-            dependencies: ["FastMCPServer", "FastMCPProtocol"]
+            dependencies: ["FastMCPServer", "FastMCPProtocol"            ],
+            exclude: excludedFiles
         ),
     ]
 )
