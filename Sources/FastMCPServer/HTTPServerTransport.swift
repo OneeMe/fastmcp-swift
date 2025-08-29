@@ -330,6 +330,23 @@ public actor HTTPServerTransport: Transport {
             sessions[sessionId] = Session(id: sessionId, createdAt: Date())
         }
         
+        // Send HTTP headers immediately to prevent timeout
+        let responseHeaders = [
+            "Content-Type: application/json",
+            "Access-Control-Allow-Origin: *", 
+            "Access-Control-Allow-Headers: Content-Type, Accept, Mcp-Session-Id",
+            "Mcp-Session-Id: \(sessionId)",
+            "Transfer-Encoding: chunked",
+            "Connection: keep-alive"
+        ]
+        
+        let headerResponse = "HTTP/1.1 200 OK\r\n" +
+            responseHeaders.joined(separator: "\r\n") + "\r\n\r\n"
+        
+        if let headerData = headerResponse.data(using: .utf8) {
+            connection.send(content: headerData, completion: .idempotent)
+        }
+        
         // Forward the JSON-RPC message to the MCP server and wait for response
         do {
             let responseData = try await withCheckedThrowingContinuation { continuation in
@@ -339,15 +356,11 @@ public actor HTTPServerTransport: Transport {
                 messageContinuation.yield(body)
             }
             
-            // Send the response back to the client
-            await sendJSONDataResponse(
-                connection: connection,
-                sessionId: sessionId,
-                data: responseData
-            )
+            // Send the response body as a chunked response
+            await sendChunkedResponse(connection: connection, data: responseData)
             
         } catch {
-            // Send error response
+            // Send error response as a chunk
             let errorResponse: [String: Any] = [
                 "jsonrpc": "2.0",
                 "id": requestId,
@@ -357,11 +370,13 @@ public actor HTTPServerTransport: Transport {
                 ]
             ]
             
-            await sendJSONResponse(
-                connection: connection,
-                sessionId: sessionId,
-                body: errorResponse
-            )
+            do {
+                let errorData = try JSONSerialization.data(withJSONObject: errorResponse)
+                await sendChunkedResponse(connection: connection, data: errorData)
+            } catch {
+                await logger.error("Failed to serialize error response", metadata: ["error": "\(error)"])
+                await sendChunkedResponse(connection: connection, data: "Internal Server Error".data(using: .utf8)!)
+            }
         }
     }
     
@@ -437,6 +452,39 @@ public actor HTTPServerTransport: Transport {
         } catch {
             await logger.error("Failed to serialize JSON response", metadata: ["error": "\(error)"])
             await sendHTTPResponse(connection: connection, status: 500, body: "Internal Server Error")
+        }
+    }
+    
+    private func sendChunkedResponse(connection: NWConnection, data: Data) async {
+        // Send the data as a single HTTP chunk
+        let hexSize = String(data.count, radix: 16).uppercased()
+        let chunkHeader = "\(hexSize)\r\n"
+        let chunkTrailer = "\r\n"
+        let endChunk = "0\r\n\r\n"
+        
+        // Send chunk header
+        if let headerData = chunkHeader.data(using: .utf8) {
+            connection.send(content: headerData, completion: .idempotent)
+        }
+        
+        // Send chunk data  
+        connection.send(content: data, completion: .idempotent)
+        
+        // Send chunk trailer
+        if let trailerData = chunkTrailer.data(using: .utf8) {
+            connection.send(content: trailerData, completion: .idempotent)
+        }
+        
+        // Send end chunk and close connection
+        if let endData = endChunk.data(using: .utf8) {
+            connection.send(content: endData, completion: .contentProcessed { error in
+                if let error = error {
+                    Task { [weak self] in
+                        await self?.logger.error("Failed to send chunked response", metadata: ["error": "\(error)"])
+                    }
+                }
+                connection.cancel()
+            })
         }
     }
     
