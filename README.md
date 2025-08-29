@@ -6,7 +6,7 @@ A Swift implementation of FastMCP, providing an ergonomic wrapper around the off
 
 FastMCP Swift brings the Model Context Protocol to the Swift ecosystem, supporting iOS, macOS, and visionOS platforms. It consists of two main packages:
 
-- **FastMCPSwift**: High-level wrapper around the MCP Swift SDK with HTTP streaming transport
+- **FastMCPServer**: High-level wrapper around the MCP Swift SDK with HTTP streaming transport
 - **FastMCPProtocol**: Protocol-based system for modular tool registration (framework for future expansion)
 
 ## Features
@@ -31,7 +31,7 @@ dependencies: [
 Then import the modules:
 
 ```swift
-import FastMCPSwift
+import FastMCPServer
 import FastMCPProtocol // For plugin development
 ```
 
@@ -40,7 +40,7 @@ import FastMCPProtocol // For plugin development
 ### Basic Server
 
 ```swift
-import FastMCPSwift
+import FastMCPServer
 
 @main
 struct MyServer {
@@ -56,7 +56,7 @@ struct MyServer {
 ### Client Usage
 
 ```swift
-import FastMCPSwift
+import FastMCPServer
 
 @main
 struct MyClient {
