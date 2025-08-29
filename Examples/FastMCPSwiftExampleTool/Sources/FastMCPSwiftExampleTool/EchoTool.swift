@@ -1,9 +1,12 @@
 import Foundation
 import FastMCPProtocol
+import FastMCPMacro
 
 /// An echo tool that returns the input message back to the user
-public final class EchoTool: ToolProvider {
-    public let toolName = "echo"
+@RegisterTool
+public final class EchoTool: MCPTool, ToolProvider, @unchecked Sendable {
+    public static let toolName: String = "echo"
+    public var toolName: String { EchoTool.toolName }
     public let toolDescription = "Echo back the input message"
     
     public init() {}

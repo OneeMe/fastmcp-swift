@@ -24,7 +24,12 @@ let package = Package(
             name: "FastMCPSwiftExampleTool",
             dependencies: [
                 .product(name: "FastMCPProtocol", package: "fastmcp-swift"),
+                .product(name: "FastMCPMacro", package: "fastmcp-swift"),
             ]
+        ,
+        plugins: [
+            .plugin(name: "FastMCPBuildToolPlugin", package: "fastmcp-swift")
+        ]
         ),
         .testTarget(
             name: "FastMCPSwiftExampleToolTests",

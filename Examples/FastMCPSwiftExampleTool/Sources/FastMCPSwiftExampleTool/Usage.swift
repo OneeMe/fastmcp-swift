@@ -30,7 +30,7 @@ public enum Usage {
         print("Created registry")
         
         // Register the echo tool
-        FastMCPSwiftExampleTool.registerTools(with: registry)
+        await FastMCPSwiftExampleTool.registerTools(with: registry)
         print("Registered tools")
         
         // List registered tools

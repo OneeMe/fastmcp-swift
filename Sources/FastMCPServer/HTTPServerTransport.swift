@@ -211,7 +211,14 @@ public actor HTTPServerTransport: Transport {
                 }
                 
                 if let error = error {
-                    await self?.logger.error("HTTP receive error", metadata: ["error": "\(error)"])
+                    // 常见的连接取消（如客户端主动断开）会以 ECANCELED/posix 89 呈现，降级为 debug 以免噪声
+                    if let posix = error as? POSIXError, posix.code == .ECANCELED {
+                        await self?.logger.debug("HTTP receive canceled", metadata: ["error": "\(posix)"])
+                    } else if (error as NSError).domain == NSPOSIXErrorDomain && (error as NSError).code == Int(ECANCELED) {
+                        await self?.logger.debug("HTTP receive canceled", metadata: ["error": "\(error)"])
+                    } else {
+                        await self?.logger.error("HTTP receive error", metadata: ["error": "\(error)"])
+                    }
                 }
             }
         }

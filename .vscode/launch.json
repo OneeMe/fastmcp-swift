@@ -1,0 +1,22 @@
+{
+  "configurations": [
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:fastmcp-swift}",
+      "name": "Debug fastmcp-gen",
+      "program": "${workspaceFolder:fastmcp-swift}/.build/debug/fastmcp-gen",
+      "preLaunchTask": "swift: Build Debug fastmcp-gen"
+    },
+    {
+      "type": "swift",
+      "request": "launch",
+      "args": [],
+      "cwd": "${workspaceFolder:fastmcp-swift}",
+      "name": "Release fastmcp-gen",
+      "program": "${workspaceFolder:fastmcp-swift}/.build/release/fastmcp-gen",
+      "preLaunchTask": "swift: Build Release fastmcp-gen"
+    }
+  ]
+}
