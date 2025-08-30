@@ -1,5 +1,114 @@
 import Foundation
 
+// MARK: - MCP Tool Protocol System
+
+/// Schema representation for JSON Schema
+public enum JSONSchema: Codable, Sendable {
+    case string(String)
+    case number(Double)
+    case integer(Int)
+    case boolean(Bool)
+    case array([JSONSchema])
+    case object([String: JSONSchema])
+    case null
+    
+    public var stringValue: String? {
+        if case .string(let value) = self { return value }
+        return nil
+    }
+}
+
+/// MCP Tool Definition
+public struct MCPToolDefinition: Sendable {
+    public let name: String
+    public let description: String
+    public let inputSchema: JSONSchema
+    
+    public init(name: String, description: String, inputSchema: JSONSchema) {
+        self.name = name
+        self.description = description
+        self.inputSchema = inputSchema
+    }
+}
+
+/// MCP Tool Result
+public struct MCPToolResult: Sendable {
+    public let content: [MCPContent]
+    public let isError: Bool
+    
+    public init(content: [MCPContent], isError: Bool = false) {
+        self.content = content
+        self.isError = isError
+    }
+}
+
+/// MCP Content types
+public enum MCPContent: Sendable {
+    case text(String)
+    case image(String, String?) // data, mimeType
+    
+    public var text: String? {
+        if case .text(let value) = self { return value }
+        return nil
+    }
+}
+
+/// Core MCP Tool Protocol
+public protocol MCPToolProtocol: Sendable {
+    static var mcpToolDefinition: MCPToolDefinition { get }
+    static func callTool(with arguments: [String: Any]) async throws -> MCPToolResult
+}
+
+/// Error types for MCP operations
+public enum MCPError: Error, Sendable {
+    case invalidParams(String)
+    case methodNotFound(String)
+    case internalError(String)
+    case invalidRequest(String)
+}
+
+// MARK: - MCP Tool Registry
+
+/// Global registry for MCP tools
+public final class MCPToolRegistry: @unchecked Sendable {
+    public static let shared = MCPToolRegistry()
+    
+    private var tools: [String: any MCPToolProtocol.Type] = [:]
+    private var resources: [String: any ResourceProvider] = [:]
+    private var prompts: [String: any PromptProvider] = [:]
+    
+    private let lock = NSLock()
+    
+    private init() {}
+    
+    public func register<T: MCPToolProtocol>(_ toolType: T.Type) {
+        lock.withLock {
+            tools[T.mcpToolDefinition.name] = toolType
+        }
+    }
+    
+    public func getAllTools() -> [MCPToolDefinition] {
+        lock.withLock {
+            return tools.values.map { $0.mcpToolDefinition }
+        }
+    }
+    
+    public func getTool(named name: String) -> (any MCPToolProtocol.Type)? {
+        lock.withLock {
+            return tools[name]
+        }
+    }
+    
+    public func callTool(named name: String, with arguments: [String: Any]) async throws -> MCPToolResult {
+        guard let toolType = getTool(named: name) else {
+            throw MCPError.methodNotFound("Tool not found: \(name)")
+        }
+        return try await toolType.callTool(with: arguments)
+    }
+}
+
+// MARK: - Legacy Provider Protocols (Deprecated)
+
 public protocol ToolProvider: Sendable {
     var toolName: String { get }
     var toolDescription: String { get }

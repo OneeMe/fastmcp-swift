@@ -1,0 +1,611 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD3CCAE32E62F86E00A14D0E /* FastMCPServer in Frameworks */ = {isa = PBXBuildFile; productRef = BD3CCAE22E62F86E00A14D0E /* FastMCPServer */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BD3CCAC52E62F83100A14D0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD3CCAAC2E62F82F00A14D0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD3CCAB32E62F82F00A14D0E;
+			remoteInfo = FastMCPSwiftServerExample;
+		};
+		BD3CCACF2E62F83100A14D0E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BD3CCAAC2E62F82F00A14D0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BD3CCAB32E62F82F00A14D0E;
+			remoteInfo = FastMCPSwiftServerExample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BD3CCAB42E62F82F00A14D0E /* FastMCPSwiftServerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastMCPSwiftServerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD3CCAC42E62F83100A14D0E /* FastMCPSwiftServerExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastMCPSwiftServerExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD3CCACE2E62F83100A14D0E /* FastMCPSwiftServerExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastMCPSwiftServerExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BD3CCAB62E62F82F00A14D0E /* FastMCPSwiftServerExample */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FastMCPSwiftServerExample;
+			sourceTree = "<group>";
+		};
+		BD3CCAC72E62F83100A14D0E /* FastMCPSwiftServerExampleTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FastMCPSwiftServerExampleTests;
+			sourceTree = "<group>";
+		};
+		BD3CCAD12E62F83100A14D0E /* FastMCPSwiftServerExampleUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = FastMCPSwiftServerExampleUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD3CCAB12E62F82F00A14D0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD3CCAE32E62F86E00A14D0E /* FastMCPServer in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD3CCAC12E62F83100A14D0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD3CCACB2E62F83100A14D0E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD3CCAAB2E62F82F00A14D0E = {
+			isa = PBXGroup;
+			children = (
+				BD3CCAB62E62F82F00A14D0E /* FastMCPSwiftServerExample */,
+				BD3CCAC72E62F83100A14D0E /* FastMCPSwiftServerExampleTests */,
+				BD3CCAD12E62F83100A14D0E /* FastMCPSwiftServerExampleUITests */,
+				BD3CCAB52E62F82F00A14D0E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD3CCAB52E62F82F00A14D0E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD3CCAB42E62F82F00A14D0E /* FastMCPSwiftServerExample.app */,
+				BD3CCAC42E62F83100A14D0E /* FastMCPSwiftServerExampleTests.xctest */,
+				BD3CCACE2E62F83100A14D0E /* FastMCPSwiftServerExampleUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BD3CCAB32E62F82F00A14D0E /* FastMCPSwiftServerExample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD3CCAD82E62F83100A14D0E /* Build configuration list for PBXNativeTarget "FastMCPSwiftServerExample" */;
+			buildPhases = (
+				BD3CCAB02E62F82F00A14D0E /* Sources */,
+				BD3CCAB12E62F82F00A14D0E /* Frameworks */,
+				BD3CCAB22E62F82F00A14D0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BD3CCAB62E62F82F00A14D0E /* FastMCPSwiftServerExample */,
+			);
+			name = FastMCPSwiftServerExample;
+			packageProductDependencies = (
+				BD3CCAE22E62F86E00A14D0E /* FastMCPServer */,
+			);
+			productName = FastMCPSwiftServerExample;
+			productReference = BD3CCAB42E62F82F00A14D0E /* FastMCPSwiftServerExample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BD3CCAC32E62F83100A14D0E /* FastMCPSwiftServerExampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD3CCADB2E62F83100A14D0E /* Build configuration list for PBXNativeTarget "FastMCPSwiftServerExampleTests" */;
+			buildPhases = (
+				BD3CCAC02E62F83100A14D0E /* Sources */,
+				BD3CCAC12E62F83100A14D0E /* Frameworks */,
+				BD3CCAC22E62F83100A14D0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD3CCAC62E62F83100A14D0E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BD3CCAC72E62F83100A14D0E /* FastMCPSwiftServerExampleTests */,
+			);
+			name = FastMCPSwiftServerExampleTests;
+			packageProductDependencies = (
+			);
+			productName = FastMCPSwiftServerExampleTests;
+			productReference = BD3CCAC42E62F83100A14D0E /* FastMCPSwiftServerExampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BD3CCACD2E62F83100A14D0E /* FastMCPSwiftServerExampleUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD3CCADE2E62F83100A14D0E /* Build configuration list for PBXNativeTarget "FastMCPSwiftServerExampleUITests" */;
+			buildPhases = (
+				BD3CCACA2E62F83100A14D0E /* Sources */,
+				BD3CCACB2E62F83100A14D0E /* Frameworks */,
+				BD3CCACC2E62F83100A14D0E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BD3CCAD02E62F83100A14D0E /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BD3CCAD12E62F83100A14D0E /* FastMCPSwiftServerExampleUITests */,
+			);
+			name = FastMCPSwiftServerExampleUITests;
+			packageProductDependencies = (
+			);
+			productName = FastMCPSwiftServerExampleUITests;
+			productReference = BD3CCACE2E62F83100A14D0E /* FastMCPSwiftServerExampleUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD3CCAAC2E62F82F00A14D0E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1640;
+				LastUpgradeCheck = 1640;
+				TargetAttributes = {
+					BD3CCAB32E62F82F00A14D0E = {
+						CreatedOnToolsVersion = 16.4;
+					};
+					BD3CCAC32E62F83100A14D0E = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = BD3CCAB32E62F82F00A14D0E;
+					};
+					BD3CCACD2E62F83100A14D0E = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = BD3CCAB32E62F82F00A14D0E;
+					};
+				};
+			};
+			buildConfigurationList = BD3CCAAF2E62F82F00A14D0E /* Build configuration list for PBXProject "FastMCPSwiftServerExample" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BD3CCAAB2E62F82F00A14D0E;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				BD3CCAE12E62F86E00A14D0E /* XCLocalSwiftPackageReference "../../../fastmcp-swift" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = BD3CCAB52E62F82F00A14D0E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD3CCAB32E62F82F00A14D0E /* FastMCPSwiftServerExample */,
+				BD3CCAC32E62F83100A14D0E /* FastMCPSwiftServerExampleTests */,
+				BD3CCACD2E62F83100A14D0E /* FastMCPSwiftServerExampleUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BD3CCAB22E62F82F00A14D0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD3CCAC22E62F83100A14D0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD3CCACC2E62F83100A14D0E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD3CCAB02E62F82F00A14D0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD3CCAC02E62F83100A14D0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD3CCACA2E62F83100A14D0E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BD3CCAC62E62F83100A14D0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD3CCAB32E62F82F00A14D0E /* FastMCPSwiftServerExample */;
+			targetProxy = BD3CCAC52E62F83100A14D0E /* PBXContainerItemProxy */;
+		};
+		BD3CCAD02E62F83100A14D0E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BD3CCAB32E62F82F00A14D0E /* FastMCPSwiftServerExample */;
+			targetProxy = BD3CCACF2E62F83100A14D0E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BD3CCAD62E62F83100A14D0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BD3CCAD72E62F83100A14D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		BD3CCAD92E62F83100A14D0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FastMCPSwiftServerExample/FastMCPSwiftServerExample.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = spatial.onee.FastMCPSwiftServerExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Debug;
+		};
+		BD3CCADA2E62F83100A14D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = FastMCPSwiftServerExample/FastMCPSwiftServerExample.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = spatial.onee.FastMCPSwiftServerExample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				REGISTER_APP_GROUPS = YES;
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Release;
+		};
+		BD3CCADC2E62F83100A14D0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = spatial.onee.FastMCPSwiftServerExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FastMCPSwiftServerExample.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FastMCPSwiftServerExample";
+				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Debug;
+		};
+		BD3CCADD2E62F83100A14D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = spatial.onee.FastMCPSwiftServerExampleTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FastMCPSwiftServerExample.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FastMCPSwiftServerExample";
+				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Release;
+		};
+		BD3CCADF2E62F83100A14D0E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = spatial.onee.FastMCPSwiftServerExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = FastMCPSwiftServerExample;
+				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Debug;
+		};
+		BD3CCAE02E62F83100A14D0E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = spatial.onee.FastMCPSwiftServerExampleUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TEST_TARGET_NAME = FastMCPSwiftServerExample;
+				XROS_DEPLOYMENT_TARGET = 2.5;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD3CCAAF2E62F82F00A14D0E /* Build configuration list for PBXProject "FastMCPSwiftServerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD3CCAD62E62F83100A14D0E /* Debug */,
+				BD3CCAD72E62F83100A14D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD3CCAD82E62F83100A14D0E /* Build configuration list for PBXNativeTarget "FastMCPSwiftServerExample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD3CCAD92E62F83100A14D0E /* Debug */,
+				BD3CCADA2E62F83100A14D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD3CCADB2E62F83100A14D0E /* Build configuration list for PBXNativeTarget "FastMCPSwiftServerExampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD3CCADC2E62F83100A14D0E /* Debug */,
+				BD3CCADD2E62F83100A14D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD3CCADE2E62F83100A14D0E /* Build configuration list for PBXNativeTarget "FastMCPSwiftServerExampleUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD3CCADF2E62F83100A14D0E /* Debug */,
+				BD3CCAE02E62F83100A14D0E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		BD3CCAE12E62F86E00A14D0E /* XCLocalSwiftPackageReference "../../../fastmcp-swift" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../../../fastmcp-swift";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BD3CCAE22E62F86E00A14D0E /* FastMCPServer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FastMCPServer;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = BD3CCAAC2E62F82F00A14D0E /* Project object */;
+}
